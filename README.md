@@ -1,6 +1,6 @@
 # pixen
 
-PXE-boot a Xen hypervisor pool with a flash drive.
+PXE-boot a Xen hypervisor pool from a flash drive.
 
 ## pieces
 
