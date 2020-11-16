@@ -1,4 +1,4 @@
-![alt text](https://github.com/umhau/pxen/blob/master/PXEN.png?raw=true)
+![alt text](https://github.com/umhau/pxen/blob/main/PXEN.png?raw=true)
 
 PXE-boot a Xen hypervisor pool from a flash drive.
 
