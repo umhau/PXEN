@@ -1,4 +1,4 @@
-# pixen
+![](https://raw.githubusercontent.com/umhau/pixen/master/PIXEN.png)
 
 PXE-boot a Xen hypervisor pool from a flash drive.
 
