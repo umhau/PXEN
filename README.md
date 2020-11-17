@@ -1,6 +1,6 @@
 ![alt text](https://github.com/umhau/pxen/blob/main/PXEN.png?raw=true)
 
-PXE-boot a Xen hypervisor pool from a flash drive.
+PXE-boot a Xen hypervisor pool from a customized flash drive.
 
 ## pain point
 
