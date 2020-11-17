@@ -23,6 +23,8 @@ Reduction of complexity into simplicity.
 
 ## design points
 
+https://support.citrix.com/article/CTX128391 This article describes how to remove a server from a XenServer pool that contains only one server. 
+
 ### boot process architecture
 
 Assumption: that the difference between primary and secondary xen hosts is limited to a couple of settings that can be easily changed. The passive primary host identification used below ensures that the same boot files can be used on the first machine as with all the others, and may simplify the architecture.
