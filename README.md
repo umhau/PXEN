@@ -47,6 +47,10 @@ Thoughts on verification of the source flash drive:
 
 Note that the flash drive should contain several files that are modified both by the sysadmin and by the host0 (in communication with the hostUs). It may be convenient to put an NTFS or FAT32 partition at the beginning of the drive, and put all user-modified files in there. If the files are unreadable or unsuitable due to user error, backups can be put elsewhere and big warnings in bright letters put everywhere.
 
+These 'state files' might benefit from a format / syntax similar to nix or lisp, especially if there's a need to specify configurations (or configuration files) that are specific to subsets of hosts.  
+
+In general, these files will be provided to all machines in the cluster, in their entirety.  If that's a problem, later versions of the tool can make breaking changes to adjust that.
+
 - list of MAC addresses associated with each machine - for wake-on-LAN
 - list of machine identifiers (motherboard serials?) to associate hostnames with previously-seen machines. useful to maintain continuity over reboots. Or, generate the hostnames from the motherboard serials, and then they will maintain continuity automatically.
 - ssh key and/or password: if the `/etc/shadow` file is part of the standard filesystem, then the same accounts should exist accross all the machines. Is this a security risk? Probably not, at least not within my vague idea of the threat model involved. 
