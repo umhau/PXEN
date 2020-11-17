@@ -9,7 +9,7 @@ Installing hypervisors on a large cluster, and keeping them up-to-date, is:
 - time-consuming, 
 - complicated, 
 - requires re-doing custom configurations after updates,  
-- and is possibly error-prone with the risk of data loss.
+- and possibly error-prone with the risk of data loss.
 
 ## value
 
