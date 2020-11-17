@@ -38,6 +38,8 @@ Thoughts on verification of the source flash drive:
 
 - A file is placed on the flash drive, to identify it as the source for the cluster. This file should have sufficient IDs that it cannot be mistaken or faked without sufficient effort that the duplication must be intentional. 
 - It may also be useful to make that identification file easy to fake.  Are there use-cases where multiple host0s are wanted, or a different server from the usb booted one is wanted as the host0? Maybe, the host0 should only be host0 as long as that flash drive is inserted - it serves as a sort of key, and the whole pool crashes if it's removed. (Great way to insert unneeded fragility)
+  - if multiple pools are wanted, then the primary host of each pool could/should boot from a flash drive? In this case, another list should be maintained of the hosts in each pool. If a host is to be added to a pool, it's done in xcp-ng center, and then the host0 automatically adds it to an internal list. Otherwise, the hosts are PXE booted and remain separate until added together. 
+  - what happens if you boot two machines from usbs independently? they both consider themselves host0s, and try to host PXE boot servers. Then you have PXE boot servers competing.
 - There should be a way to differentiate multiple similar boot disks that are connected - what if the flash drive is switched with another, with different settings, between steps 2 and 6? Make sure that it is impossible for the cluster to enter an error state with multiple host0 machines.
 - What happens if an identical flash drive is connected to a secondary machine? -- a hash should be dropped on the flash drive with the date, time, machine id, so having an identical, validated flash drive becomes impossible.
 
@@ -46,6 +48,7 @@ Note that the flash drive should contain several files that are modified both by
 - list of MAC addresses associated with each machine - for wake-on-LAN
 - list of machine identifiers (motherboard serials?) to associate hostnames with previously-seen machines. useful to maintain continuity over reboots. Or, generate the hostnames from the motherboard serials, and then they will maintain continuity automatically.
 - ssh key and/or password: if the `/etc/shadow` file is part of the standard filesystem, then the same accounts should exist accross all the machines. Is this a security risk? Probably not, at least not within my vague idea of the threat model involved. 
+- list of machines and the pools they're in, and which machines are the primaries of the pool. This is based on the deterministic hostnames. It also means that pools and primary machines _should not_ be determined by the machine with the flash drive in it.
 
 ### misc
 
