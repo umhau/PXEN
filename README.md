@@ -4,13 +4,21 @@ PXE-boot a Xen hypervisor pool from a customized flash drive.
 
 ## pain point
 
-Installing hypervisors on a large cluster, and keeping them up-to-date, is time-consuming and possibly error-prone with data loss resulting.
+Installing hypervisors on a large cluster, and keeping them up-to-date, is time-consuming and possibly error-prone with resulting data loss.
+
+## value
+
+Complexity reduction: boot once & run everywhere. 
 
 ## design points
 
 Specifications for all VMs is housed on the originating flash drive; these are moved to wherever they fit on the hypervisor. Parameters include CPU count, memory requirements and disk access bandwidth. (Should be possible to make that a solvable / optimizable equation.)
 
 Thus, from a clean reboot, all hosts are turned on, and all guests loaded and started. To update the hypervisor, update the USB key and transfer the VMs. (?)
+
+RAID devices on each hypervisor host are automatically mounted. 
+
+Where are VMs stored?
 
 ## pieces
 
