@@ -80,6 +80,8 @@ https://serverfault.com/questions/368512/can-i-have-multiple-dhcp-servers-on-one
 
 ### PXE booting 
 
+https://support.citrix.com/article/CTX217677 Configuring your TFTP Server for PXE boot - XenServer. A sample configuration that performs an unattended installation using the answer file at the URL specified.
+
 https://serverfault.com/questions/842703/xenserver-7-1-0-pxe-installation I'm trying to set up a PXE boot of the XenServer 7.1.0 installation. I'm following Citrix Installation Guide Appendix C on pages 37ff. My Blade is booting to a grub console, but not loading the install system.
 
 https://wiki.syslinux.org/wiki/index.php?title=Mboot.c32 mboot.c32 is a Syslinux module that loads images using the Multiboot specification. A really good use case for this is booting Xen, or any other hypervisor-based virtualization pieces that also require an initrd/initramfs. If your Xen boot doesn't require an initrd, then it is possible to utilize the existing kernel/append method.
