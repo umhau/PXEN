@@ -17,22 +17,28 @@ Reduction of complexity into simplicity.
 
 ## design points
 
-### boot process
+### boot process architecture
 
-1. initial host (host0) boots from customized USB flash drive
-2. flash drive contains ready-to-use xen hypervisor (_not_ an installer) - the xen OS filesystem is copied to a RAMdisk, and the OS root is changed to that disk. A file is placed on the flash drive, to identify it as the source for the cluster. This file should have sufficient IDs that it cannot be mistaken or faked without sufficient effort that the duplication must be intentional. (It may also be useful to make that file easy to fake, in the event that's useful.)
-3. the host0 connects to the network and starts up xen orchestra. 
-4. host0 searches the local disks, mounts everything available, and checks them for anything indicating they contain xen-related files.
-5. If the source flash drive is found, the machine determines itself to be host0. (there should be a way to differentiate multiple similar boot disks that are connected - what if the flash drive is switched with another, with different settings, between steps 2 and 6?)(Make sure that it is impossible for the cluster to enter an error state with multiple host0 machines.) This passive identification ensures that the same boot files can be used on the first machine as with all the others, and may simplify the architecture.
-6. host0 initializes the TFTP (etc) services required for PXE booting. Any machine on the local network attempting to PXE boot will be able to use the same system files as host0, and will follow the same startup procedure. (what happens if an identical flash drive is connected to a secondary machine? -- a hash should be dropped on the flash drive with the date, time, machine id, so having an identical, validated flash drive becomes impossible.)
-7. All PXE-booted machines are referred to as hostU. 
-8. hostU machines follow the same procedure as host0, and search their local disks for xen related files. All VMs and SRs found are not started, but are made available to be seen in xcp-ng center and xen orchestra.
-9. At this point, xen orchestra and xcp-ng center should be able to manage the entire pool.
+Assumption: that the difference between primary and secondary xen hosts is limited to a couple of settings that can be easily changed. The passive primary host identification used below ensures that the same boot files can be used on the first machine as with all the others, and may simplify the architecture.
 
-Note that the flash drive should contain several files that are modified both by the sysadmin and by the host0 (in communication with the hostUs).
+- machine boots, either from the initial customized USB flash drive or with PXE. The root filesystem (which is a ready-to-use xen hypervisor, _not_ an installer) is copied into a RAMdisk,  and the OS root is changed to that disk. If a hostname ID list is available, it is used to determine the hostname; otherwise, the hostname is randomized (or it's generated deterministically from the motherboard ID, in which case the list is superfluous).
+- The machine is now available for access through xcp-ng center.
+- the attached drives are mounted and searched. All VMs and SRs found are not started, but are made available to be seen in xcp-ng center and xen orchestra.
+- if the source flash drive is found, and verified, then the machine identifies itself as the host0 and primary member of the hypervisor pool. It uses the files on the flash drive to host the PXE boot server. If a MAC address boot list is available, it sends wake-on-LAN signals to all addresses in the list. It uses the files on the flash drive to start and host the xen-orchestra virtual machine.
+- All PXE-booted machines are referred to as hostU. The boot-search process repeats. If a source flash drive is found, it must not successfully verify.
+- At this point, xen orchestra and xcp-ng center should be able to manage the entire pool.
+
+Thoughts on verification of the source flash drive:
+
+- A file is placed on the flash drive, to identify it as the source for the cluster. This file should have sufficient IDs that it cannot be mistaken or faked without sufficient effort that the duplication must be intentional. 
+- It may also be useful to make that identification file easy to fake.  Are there use-cases where multiple host0s are wanted, or a different server from the usb booted one is wanted as the host0? Maybe, the host0 should only be host0 as long as that flash drive is inserted - it serves as a sort of key, and the whole pool crashes if it's removed. (Great way to insert unneeded fragility)
+- There should be a way to differentiate multiple similar boot disks that are connected - what if the flash drive is switched with another, with different settings, between steps 2 and 6? Make sure that it is impossible for the cluster to enter an error state with multiple host0 machines.
+- What happens if an identical flash drive is connected to a secondary machine? -- a hash should be dropped on the flash drive with the date, time, machine id, so having an identical, validated flash drive becomes impossible.
+
+Note that the flash drive should contain several files that are modified both by the sysadmin and by the host0 (in communication with the hostUs). It may be convenient to put an NTFS or FAT32 partition at the beginning of the drive, and put all user-modified files in there. If the files are unreadable or unsuitable due to user error, backups can be put elsewhere and big warnings in bright letters put everywhere.
 
 - list of MAC addresses associated with each machine - for wake-on-LAN
-- list of machine identifiers (motherboard serials?) to associate hostnames with previously-seen machines. useful to maintain continuity over reboots.
+- list of machine identifiers (motherboard serials?) to associate hostnames with previously-seen machines. useful to maintain continuity over reboots. Or, generate the hostnames from the motherboard serials, and then they will maintain continuity automatically.
 - ssh key and/or password: if the `/etc/shadow` file is part of the standard filesystem, then the same accounts should exist accross all the machines. Is this a security risk? Probably not, at least not within my vague idea of the threat model involved. 
 
 ### misc
