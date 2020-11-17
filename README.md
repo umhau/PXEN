@@ -102,3 +102,10 @@ https://support.citrix.com/article/CTX136342 This article describes how to reins
 Sometimes re-installation of XenServer is required to obtain a clean system state or to recover from a serious failure (such as a database file corruption), where VMs residing on local storage must be preserved and recovered within a reasonable amount of time.
 
 https://support.citrix.com/article/CTX125769 This article describes how to restore metadata for an individual Virtual Machine (VM). The current VM metadata restore process does not allow you to restore metadata for individual VMs.
+
+## breaking changes, deferred for later
+
+- A better identification system for hosts, beyond motherboard serial numbers. The ID will be critical when dealing with restoring VMs, and distributing saved metadata.
+- DHCP and subnet configurations.
+- flash drive architecture
+- configuration file syntax
