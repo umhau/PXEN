@@ -19,6 +19,7 @@ Reduction of complexity into simplicity.
 - Easy to maintain an updated cluster
 - Totally deterministic state
 - Fully documented cluster state in a single, central location
+- All configurations are maintained in a single location and automatically deployed.
 
 ## design points
 
