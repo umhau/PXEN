@@ -4,7 +4,12 @@ PXE-boot a Xen hypervisor pool from a customized flash drive.
 
 ## pain point
 
-Installing hypervisors on a large cluster, and keeping them up-to-date, is time-consuming, complicated, requires re-doing custom configurations after updates,  and is possibly error-prone with the risk of data loss.
+Installing hypervisors on a large cluster, and keeping them up-to-date, is:
+
+- time-consuming, 
+- complicated, 
+- requires re-doing custom configurations after updates,  
+- and is possibly error-prone with the risk of data loss.
 
 ## value
 
