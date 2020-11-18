@@ -55,7 +55,7 @@ the fallacies:
 - Transport cost is zero;
 - The network is homogeneous.
 
-Examine every line of code for these assumptions.
+Examine every line of code for these assumptions. Note, however, that we do assume the network is appropriate for a xen hypervisor cluster.
 
 ## design points
 
