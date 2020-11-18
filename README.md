@@ -63,8 +63,6 @@ What if I used MPI for inter-host communication? Is that useful, or just extra c
 
 ### boot process architecture
 
-Assumption: that the difference between primary and secondary xen hosts is limited to a couple of settings that can be easily changed. The passive primary host identification used below ensures that the same boot files can be used on the first machine as with all the others, and may simplify the architecture.
-
 Note: once all machines are booted, the machine with the flash drive and the PXE boot server should not be considered any different from all the other machines. It _should not_ be considered a primary server in a pool, and the collection of booted machines should not be put in a pool together. That can all be done in the management consoles after the fact, and the states decided on saved to the flash drive.
 
 - machine boots, either from the initial customized USB flash drive or with PXE. The root filesystem (which is a ready-to-use xen hypervisor, _not_ an installer) is copied into a RAMdisk,  and the OS root is changed to that disk. If a hostname ID list is available, it is used to determine the hostname; otherwise, the hostname is randomized (or it's generated deterministically from the motherboard ID, in which case the list is superfluous).
