@@ -31,6 +31,7 @@ i.e.
 
 - all scripts and programs should be easy to pick up and read.
 - a minimum of scripts and programs should be required.
+- the architecture should be understandable from first principles.
 - everything is deterministic.
 - every line of code is documented, and follows logically.
 - every possible failure mode should be considered at every line of code.
