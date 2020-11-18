@@ -80,6 +80,8 @@ https://support.citrix.com/article/CTX128391 This article describes how to remov
 
 There's two ways to go w.r.t. DHCP: either it's run from one of the initial machines, or it's run by a router external to the cluster. The problem is, in case of a power outage, the entire cluster will be down until the DHCP server is back online. Is there a way to do a temporary DHCP server, when the main one isn't available? Is there a way to do direct connections, possibly with MAC addresses?
 
+Obviously, version 1 of PXEN will be dependent on an external DHCP server. Everything that follows in this section is a resilience extra that will be added later.
+
 https://softwareengineering.stackexchange.com/questions/309546/connecting-directly-to-another-computer-knowing-only-the-mac-address It looks like I could have a fail-over system:
 
 - check if there's a DHCP server responding to requests. If there is, all's well with the world, use it.
