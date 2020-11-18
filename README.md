@@ -87,6 +87,7 @@ https://softwareengineering.stackexchange.com/questions/309546/connecting-direct
   - If there's a list of MAC addresses available, use them to set static IPs and initiate direct connections between the servers.
   - Also potentially possible to sniff the local traffic? Emulate a DHCP server?
   - Send out special packets to try and find other servers?
+  - Use randomized IPV6 addresses, since those would virtually never overlap, and use those to initiate direct connections with the other servers. Use special packets broadcasted through the network to find the other servers. (Could probably encrypt them with the SSH key, too)
   - Somehow or other, set up a communication network.
   - When a DHCP server is back online, change the IP addresses to what the DHCP server hands out. Convert them internally, so there's no missed connections. 
 - Before this is pursued farther, figure out exactly what the scenario is supposed to be. What's the threat, what's expected / hoped to happen? -- cluster is back online immediately after the power is on, and reconnects with the rest of the infrastructure as it reappears.
