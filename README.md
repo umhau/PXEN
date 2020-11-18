@@ -21,7 +21,44 @@ Reduction of complexity into simplicity.
 - Fully documented cluster state in a single, central location
 - All configurations are maintained in a single location and automatically deployed.
 
+## design / architecture principles
+
+- extreme reliability
+- extreme simplicity
+- extreme resiliency
+
+i.e.
+
+- all scripts and programs should be easy to pick up and read.
+- a minimum of scripts and programs should be required.
+- everything is deterministic.
+- every line of code is documented, and follows logically.
+- every possible failure mode should be considered at every line of code.
+- every line of code revolves around maximizing uptime and getting online in the minimum of time.
+
+metrics:
+
+- minimum downtime in the face of the chaos monkey
+- minimum startup time
+- minimize time-to-management-console-availability
+- minimize time-to-last-host-online
+
+the fallacies:
+
+- The network is reliable;
+- Latency is zero;
+- Bandwidth is infinite;
+- The network is secure;
+- Topology doesn't change;
+- There is one administrator;
+- Transport cost is zero;
+- The network is homogeneous.
+
+Examine every line of code for these assumptions.
+
 ## design points
+
+What if I used MPI for inter-host communication? Is that useful, or just extra complexity?
 
 ### boot process architecture
 
