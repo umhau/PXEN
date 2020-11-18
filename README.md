@@ -78,6 +78,8 @@ https://support.citrix.com/article/CTX128391 This article describes how to remov
 
 ### DHCP considerations
 
+There's two ways to go w.r.t. DHCP: either it's run from one of the initial machines, or it's run by a router external to the cluster. The problem is, in case of a power outage, the entire cluster will be down until the DHCP server is back online. Is there a way to do a temporary DHCP server, when the main one isn't available? Is there a way to do direct connections, possibly with MAC addresses?
+
 https://web.archive.org/web/20121031051901/http://www.pearbright.com/index.php/download/25-dns-dhcp-download By permanently associating MAC and IP addresses, we ensured that both DHCP servers gave the same response to each DHCP request. Knowing the IP address of every network asset also simplified network administration, and DNS could run off the same database. 
 
 https://serverfault.com/questions/368512/can-i-have-multiple-dhcp-servers-on-one-network Is it possible to have more than one DHCP server on the same LAN? What are the implications of doing this? 
