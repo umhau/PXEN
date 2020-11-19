@@ -1,0 +1,2 @@
+dhcp net0
+chain http://${net0/next-server}/gpxe-script

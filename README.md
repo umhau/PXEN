@@ -72,6 +72,10 @@ Note: once all machines are booted, the machine with the flash drive and the PXE
 - All PXE-booted machines are referred to as hostU. The boot-search process repeats. If a source flash drive is found, it must not successfully verify.
 - At this point, xen orchestra and xcp-ng center should be able to manage the entire pool.
 
+Bottleneck: the PXE server is located on the flash drive, in the current architecture. What happens without the flash drive, when the whole system power cycles and reboots simultaneously?  The PXE server will have to live on one of the servers; or, the flash drive will have to be a permanent resident of the cluster. The flash drive is nearly read-only; it can safely be used as a permanent component of the cluster. This prevents complex architectural changes after the first boot -- the second and hundredth boot will behave just like the first.
+
+Remember to include flash drive data checks, to ensure it is as it ought to be.
+
 Thoughts on verification of the source flash drive:
 
 - A file is placed on the flash drive, to identify it as the source for the cluster. This file should have sufficient IDs that it cannot be mistaken or faked without sufficient effort that the duplication must be intentional. 
@@ -161,3 +165,7 @@ https://support.citrix.com/article/CTX125769 This article describes how to resto
 - DHCP and subnet configurations.
 - flash drive architecture
 - configuration file syntax
+
+## stayin' alive
+
+Free software, paid consulting.
