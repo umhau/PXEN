@@ -6,6 +6,10 @@ focus on the PXE boot first. Get it working, document the process, script it. Tw
 
 https://ipxe.org/download
 
+- must find a way to serve PXE files without modifying the DHCP server. 
+
+- can I make dnsmasq auto-detect the network range? Right now the dnsmasq.conf file needs the network to be hardcoded.
+
 
 ## alpine versions
 

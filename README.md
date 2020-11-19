@@ -21,6 +21,14 @@ Reduction of complexity into simplicity.
 - Fully documented cluster state in a single, central location
 - All configurations are maintained in a single location and automatically deployed.
 
+## user experience
+
+Download & burn an ISO, boot it, go turn on your servers, and open up your management console. Hey presto, your cluster is running. 
+
+After a power outage, boot the same flash drive again and watch as your whole cluster automagically turns back on and restores its state.
+
+For extra redundancy, I could host a service for holding the cluster metadata. Then you can use a fresh disk image, that's been primed with your user ID & authentication, and you don't have to worry about the flash drive dying. 
+
 ## design / architecture principles
 
 - extreme reliability
@@ -111,6 +119,12 @@ Where are VMs stored?
 Among the lists of information maintained on the central boot drive, keep a record of all MAC addresses assocated with the pool members. Once that's in place, the secondary hypervisor hosts can be started with wake-on-LAN.
 
 Since we can't assume the network is stable, remember to copy all system files into ramdisks during the boot process.
+
+How to back up the metadata on the flash drive? that's a single point of failure. 
+
+### persistence
+
+- drop an 'ID file' in the flash drive, to be provided with each hostU, and used to identify objects (e.g. RAID drives) that previously belonged to the same cluster? Could even be a public/private key combo, though I don't know why encryption would be important.  The ID file would be left in the top level directory of all drives (or get dropped in the margins between partitions?) and tell the RAM drive VMs that the drive should be used as-is.
 
 ## pieces
 

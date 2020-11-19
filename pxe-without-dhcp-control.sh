@@ -16,24 +16,23 @@
 set -e
 set -v 
 
-# install dependencies
+apk add tftp-hpa dnsmasq                                          # dependencies
 
-# make needed folders
+mkdir -pv /var/tftproot/                           # create TFTP file serve path
 
-# ???
+cp ipxe/ipxe.kpxe /var/tftproot/          # place iPXE image in TFTP file server
 
-apk add tftp-hpa                                           # install TFTP server
+# sources: how to set up proxy PXE
 
+# http://howto.basjes.nl/linux/doing-pxe-without-dhcp-control
 
+# https://manski.net/2016/09/pxe-server-on-existing-network-dhcp-proxy-on-ubuntu/
 
+# http://etherboot.org/wiki/proxydhcp
 
+# https://www.theurbanpenguin.com/pxelinux-using-proxy-dhcp/
 
+# https://gmagno.dev/2019/05/quick-setup-of-a-proxydhcp-with-dnsmasq-and-pxe-boot/
+# this one talks about using xenserver
 
-# Install a TFTP server (package "tftp-hpa"). You will need to place a gPXE image at /var/tftproot/gpxe.kpxe. You can generate an image online at ROM-o-matic.eu. Select the ".kpxe" output format and the "undionly" driver. You will need to specify a custom boot script. Select "Customize". The following boot script works well:
-
-#  dhcp net0
-#  chain http://${net0/next-server}/gpxe-script
-
-# You can include ${net0/mac} and ${uuid} in the URL for the interface MAC address and machine UUID respectively.
-
-# Note that as of writing, ROM-o-matic appears to produce a buggy image unless it is used with the "undionly" driver. If you require a different driver, consider building gPXE yourself, especially if you experience inexplicable connectivity issues. Common symptoms are a seemingly correctly configured, randomly functional network connection which appears to suffer from extreme packet loss. 
+dnsmasq -d                                                       # start dnsmasq

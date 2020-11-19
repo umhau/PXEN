@@ -17,13 +17,13 @@ git clone git://git.ipxe.org/ipxe.git                     # download iPXE source
 
 cd ipxe/src                                                  # enter iPXE source
 
-ipxe_script="demo.ipxe"                            # choose iPXE embedded script
+ipxe_script="alpine-netboot.ipxe"                  # choose iPXE embedded script
 
 cp -v ../../ipxe_scripts/"$ipxe_script" .     # include a custom embedded script
 
 make bin/undionly.kpxe EMBED="$ipxe_script"                   # build iPXE image
 
-cp -v bin/undionly.kpxe ../../                 # grab the newly built iPXE image
+cp -v bin/undionly.kpxe ../../ipxe.kpxe        # grab the newly built iPXE image
 
 cd ../..                                        # cd back to main iPXE directory
 
