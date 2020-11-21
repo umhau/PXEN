@@ -1,0 +1,33 @@
+apk add mandoc man-pages
+
+To install the man pages for a package, install <package name>-doc. e.g. nano-doc
+
+See the contents of any alpine package: 
+
+https://pkgs.alpinelinux.org/contents?file=&path=&name=mkinitfs&branch=edge&repo=main&arch=x86_64
+
+
+
+rc-status   # view running services
+rc-service --list # list all available services
+
+rc-update add {service-name} {run-level-name}   # start service at boot time
+
+
+rc {runlevel}
+
+boot – Generally the only services you should add to the boot runlevel are those
+    which deal with the mounting of filesystems, set the initial state of 
+    attached peripherals and logging. Hotplugged services are added to the boot 
+    runlevel by the system. All services in the boot and sysinit runlevels are 
+    automatically included in all other runlevels except for those listed here.
+    
+single – Stops all services except for those in the sysinit runlevel.
+reboot – Changes to the shutdown runlevel and then reboots the host.
+shutdown – Changes to the shutdown runlevel and then halts the host.
+default – Used if no runlevel is specified. (This is generally the runlevel you 
+    want to add services to.)
+
+It appears that 'runlevel' here refers to the state of the system - turning on, 
+running, or turning off / rebooting. Assign a daemon to 'shutdown' if you want 
+it to run every time the system shuts down.

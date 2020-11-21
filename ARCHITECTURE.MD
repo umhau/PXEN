@@ -16,7 +16,7 @@ i.e.
 
 metrics:
 
-- minimum downtime in the face of the chaos monkey
+- minimum downtime in the face of chaos
 - minimum startup time
 - minimize time-to-management-console-availability
 - minimize time-to-last-host-online
@@ -37,6 +37,24 @@ Examine every line of code for these assumptions. Note, however, that we do assu
 ## design points
 
 What if I used MPI for inter-host communication? Is that useful, or just extra complexity?
+
+https://jonnytyers.wordpress.com/2016/08/16/hassle-free-diskless-virtual-machines-with-xen-and-alpine-linux/
+
+Looks like there's already a mechanism for storing metadata per-hostU.  https://blog.w1r3.net/2018/04/16/automated-provisioning-using-apkovl.html
+
+> To make things easier at first, we will focus on Alpine Linux (AL from now on) diskless mode. Diskless mode means that there will be no block device or disk image mounted as rootfs. Instead, the initramfs will mount a tmpfs and bootstrap the rootfs, downloading the binaries from the alpine repo. The AL boot media use this mechanism. Using the ISOs from the download page provide a quick method to run a diskless system in qemu.
+
+> Because this creates a fresh AL install on every boot, AL has a local backup mechanism. Alpine Local Backup collects files from /etc and optionally other places and creates a tarball from it. The tarball can then be stored on some writable media or uploaded to an SSH server. Per convention, the tarball has a ${HOSTNAME}.apkovl.tar.gz filename format and is usually only called “apkovl”.
+
+> To restore your system from an apkovl, the initramfs can be instructed to pre-seed the rootfs with the data contained in the apkovl. This can be done by specifying apkovl= in the kernel command line. The location can be given as http or ftp url, or directly as file path. If no apkovl is specified, the initramfs will use nlplug-findfs to mount block devices and search them for available apkovl’s.
+
+> The structure in the apkovl is identical to the actual location on the rootfs, /etc/hostname in the apkovl will extracted to /etc/hostname in the rootfs. Thus it is possible to include files from other filesystem locations.
+
+> Since an apkovl is just a gzipped tarball, its trivial to generate it from scratch. Because the apk package manager stores the list of manually installed packages in /etc/apk/world, its possible to define the packages to be installed from an apkovl. Same goes with the repository list and trusted repository keys.
+
+> In essence, an apkovl can be used to specify the payload of a running system, as in a configured webserver or other applications. Instead of having to edit configs on a running system, this allows to completely define a machine before actually having to execute it. This is an huge advantage over two-step systems like ansible, which need to be triggered externally to bring the system into production state.
+
+All I have to do is follow the design mechanism already implemented!
 
 ### boot process architecture
 

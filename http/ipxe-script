@@ -1,0 +1,4 @@
+#!ipxe
+kernel http://${net0/next-server}/prov/grsec ip=dhcp alpine_dev=nfs:${net0/next-server}:/srv/nfs/depot alpine_repo=http://nl.alpinelinux.org/alpine/v2.5/main/
+initrd http://${net0/next-server}/prov/pxerd
+boot
