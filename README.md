@@ -29,6 +29,14 @@ After a power outage, boot the same flash drive again and watch as your whole cl
 
 For extra redundancy, I could host a service for holding the cluster metadata. Then you can use a fresh disk image, that's been primed with your user ID & authentication, and you don't have to worry about the flash drive dying. 
 
+## add-ons
+
+There's a lot of cluster tools that run on top of a group of machines. Might be worthwhile to include the option to install them on the nodes.
+
+- kubernetes
+- xcp
+- cluster-manager-of-the-day
+
 ## how to use
 
 There's a lot of components to build, but to use the tool just download the image.
