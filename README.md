@@ -118,6 +118,8 @@ There isn't much of a threat model here. However, it may be useful to read throu
 
 Let the hosts run a proper window system, so that they can be used as user-facing systems in their own right. In that use case, VMs might still be needed, but they'll need to be able to be accessed on the host they're running from. I think VNC is the way to make that work? Xen doesn't really make local VM access a priority.
 
+https://wiki.xen.org/index.php?title=Xen_Project_Beginners_Guide#Starting_a_GUI_guest_.28with_VNC_server.29
+
 Once that's out of the way, multiple computers can be run from the same core of the network and they'll be secure and deterministic.
 
 i.e., this variation involves the same technology implemented in the same way, but has a totally different use case. 
