@@ -37,6 +37,8 @@ There's a lot of cluster tools that run on top of a group of machines. Might be 
 - xcp
 - cluster-manager-of-the-day
 
+Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576
+
 ## how to use
 
 There's a lot of components to build, but to use the tool just download the image.
