@@ -39,7 +39,7 @@ There's a lot of cluster tools that run on top of a group of machines. Might be 
 - cluster-manager-of-the-day
 - kvm: expand to allow compatibility with most common variations of virtualization technologies? Similar to VLC.
 
-Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576
+Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576 https://hpc.guix.info/blog/2017/11/installing-guix-on-a-cluster/
 
 ### console interfaces
 
