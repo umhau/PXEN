@@ -34,10 +34,18 @@ For extra redundancy, I could host a service for holding the cluster metadata. T
 There's a lot of cluster tools that run on top of a group of machines. Might be worthwhile to include the option to install them on the nodes.
 
 - kubernetes
-- xcp
+- ansible
+- xcp-ng / xapi: this would be technically possible, but a lot of work.
 - cluster-manager-of-the-day
+- kvm: expand to allow compatibility with most common variations of virtualization technologies? Similar to VLC.
 
 Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576
+
+### console interfaces
+
+https://libvirt.org/index.html  The libvirt project is a toolkit to manage virtualization platforms. 
+
+https://libvirt.org/apps.html Desktop applications using libvirt: virt-manager (standard on linux now, run by redhat - incompatible?), qt-virt-manager (same thing, different implementation).
 
 ## how to use
 
