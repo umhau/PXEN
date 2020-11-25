@@ -42,6 +42,15 @@ opam pin ocaml-rpc#HEAD                              # install the fixed version
 
 opam repo add xs-opam https://github.com/xapi-project/xs-opam.git    # xapi repo
 
+git clone git://github.com/xapi-project/message-switch
+cd message-switch
+mv ./configure ./configure.original && cp ../configure ./       # use my version
+chmod +x ./configure
+./configure                                       # run the configuration script
+make
+cd ..
+opam pin message-switch#HEAD
+
 opam install alcotest astring cdrom ctypes ezxenstore gzip http-svr message-switch-unix mtime pciutil ppx_deriving_rpc ppx_sexp_conv rpclib rrdd-plugin sexpr sha stunnel tar tar-unix uuid uuidm x509 xapi-idl xapi-inventory xapi-stdext-date xapi-stdext-encodings cmdliner ocamlfind xapi-stdext-pervasives xapi-stdext-std xapi-stdext-threads xapi-stdext-unix xapi-tapctl xapi-test-utils xapi-xenopsd xenctrl xml-light2 yojson http-svr xapi-idl js_of_ocaml-ppx base64 ppxlib async lwt cow rresult xmlm http-svr ppx_deriving_rpc
 
 # extant failures: systemd, message-switch-core (sometimes...), xapi-inventory

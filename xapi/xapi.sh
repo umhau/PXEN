@@ -20,5 +20,6 @@ chmod +x ./configure
 
 ./configure                                       # run the configuration script
 
-dune external-lib-deps --missing -j 1 --profile release @install
+# dune external-lib-deps --missing -j 1 --profile release @install
 
+make
