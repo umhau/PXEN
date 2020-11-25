@@ -29,6 +29,24 @@ After a power outage, boot the same flash drive again and watch as your whole cl
 
 For extra redundancy, I could host a service for holding the cluster metadata. Then you can use a fresh disk image, that's been primed with your user ID & authentication, and you don't have to worry about the flash drive dying. 
 
+## add-ons
+
+There's a lot of cluster tools that run on top of a group of machines. Might be worthwhile to include the option to install them on the nodes.
+
+- kubernetes
+- ansible
+- xcp-ng / xapi: this would be technically possible, but a lot of work.
+- cluster-manager-of-the-day
+- kvm: expand to allow compatibility with most common variations of virtualization technologies? Similar to VLC.
+
+Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576 https://hpc.guix.info/blog/2017/11/installing-guix-on-a-cluster/
+
+### console interfaces
+
+https://libvirt.org/index.html  The libvirt project is a toolkit to manage virtualization platforms. 
+
+https://libvirt.org/apps.html Desktop applications using libvirt: virt-manager (standard on linux now, run by redhat - incompatible?), qt-virt-manager (same thing, different implementation).
+
 ## how to use
 
 There's a lot of components to build, but to use the tool just download the image.
@@ -117,6 +135,8 @@ There isn't much of a threat model here. However, it may be useful to read throu
 ## variation
 
 Let the hosts run a proper window system, so that they can be used as user-facing systems in their own right. In that use case, VMs might still be needed, but they'll need to be able to be accessed on the host they're running from. I think VNC is the way to make that work? Xen doesn't really make local VM access a priority.
+
+https://wiki.xen.org/index.php?title=Xen_Project_Beginners_Guide#Starting_a_GUI_guest_.28with_VNC_server.29
 
 Once that's out of the way, multiple computers can be run from the same core of the network and they'll be secure and deterministic.
 
