@@ -1,1 +1,1 @@
-apk add sudo
+apk add sudo bash
