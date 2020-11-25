@@ -18,9 +18,7 @@ subpackages="
 	$pkgname-compiler-libs:_compiler_libs
 	$pkgname-runtime
 	"
-source="http://caml.inria.fr/pub/distrib/ocaml-${pkgver%.*}/$pkgname-$pkgver.tar.gz
-	fix-fnocommon-duplicate-definition.patch
-	"
+source="http://caml.inria.fr/pub/distrib/ocaml-${pkgver%.*}/$pkgname-$pkgver.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
