@@ -7,59 +7,9 @@ set -v                                         # echo all lines before execution
 
 [ `whoami` == 'root' ] && echo 'must NOT be root!' && exit # check for superuser
 
-un=`whoami`                             # make sure user is part of abuild group
-if ! getent group abuild | grep -q "\b${un}\b"; then
-    echo "$un MUST be part of abuild group! "
-    echo "RUN: apk add alpine-sdk"
-    echo "RUN: addgroup $un abuild"
-    echo "Then reboot and rerun this script."
-    echo -n "Execute these commands now? Otherwise ctrl-C. > " && read
-    sudo apk add alpine-sdk
-    addgroup $un abuild 
-    echo -n "Rebooting now!" && read && sudo reboot
-fi
+# -- apk packages ------------------------------------------------------------ #          
 
-# -- apk-sourced packages ---------------------------------------------------- #
-
-# sudo apk add ocaml=4.02.3                     # pin ocaml to the version we need
-
-sudo apk add gcc g++ make
-
-wget https://github.com/ocaml/ocaml/archive/4.02.3.tar.gz
-tar xvzf 4.02.3.tar.gz
-cd ocaml-4.02.3
-./configure 
-make world.opt
-make install
-cd ..
-
-# -- create fake apk for ocaml 4.02.3 ---------------------------------------- #
-
-sudo apk add alpine-sdk   # metapackage pulls packages for building new packages
-
-mv -v /etc/abuild.conf /etc/abuild.conf.original   # backup abuild configuration
-
-cp -v abuild.conf /etc/abuild.conf                     # install modified config
-
-[ -d aports ] || git clone git://git.alpinelinux.org/aports  # clone aports tree
-
-sudo addgroup `whoami` abuild     # To install dependency packages automatically
-
-sudo mkdir -p /var/cache/distfiles   # Create location where abuild caches files
-
-sudo chmod a+w /var/cache/distfiles                    # make sure it's writable
-
-abuild-keygen -a -i
-
-newapkbuild -d "dummy placeholder" -l "n/a" -u "localhost" "ocaml-4.02.3"
-
-builddir="$srcdir"/$pkgname-$pkgver 
-
-
-
-
-
-
+sudo apk add --repository `pwd`/ ocaml-4.02.3-r5.apk  # pin ocaml to old version
 
 sudo cp -v ./repositories /etc/apk/repositories       # Add community repository
 
@@ -71,7 +21,7 @@ sudo apk add libc-dev                               # needed for installing dune
 
 sudo apk add ocaml-ocamldoc                             # needed for zenith, &c.
 
-# stdext xapi-netdev xapi-stdext-monadic
+# stdext xapi-netdev xapi-stdext-monadic  # not sure about these
 
 # -- opam-sourced packages --------------------------------------------------- #
 
@@ -107,6 +57,7 @@ opam install cow cmdliner rresult yojson xmlm              # more ocaml-rpc deps
 # and not apk. Only a total of ~4 might be affected, and any/all of them could
 # get the same treatment as ocaml.
 
+# this is where it fails
 opam install cohttp-async cohttp-lwt-unix lwt_log mirage-block-unix shared-block-ring
 
 # these deps might give a clue as to the correct ocaml version.
