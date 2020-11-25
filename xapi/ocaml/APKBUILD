@@ -19,7 +19,6 @@ subpackages="
 	$pkgname-runtime
 	"
 source="http://caml.inria.fr/pub/distrib/ocaml-${pkgver%.*}/$pkgname-$pkgver.tar.gz
-	fix-segfault-in-ppc64le.patch
 	fix-check-parser-uptodate-or-warn.sh.patch
 	fix-fnocommon-duplicate-definition.patch
 	"
