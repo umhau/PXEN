@@ -19,7 +19,6 @@ subpackages="
 	$pkgname-runtime
 	"
 source="http://caml.inria.fr/pub/distrib/ocaml-${pkgver%.*}/$pkgname-$pkgver.tar.gz
-	compile-without-debug-info.patch
 	fix-mcontext-fields.patch
 	fix-segfault-in-ppc64le.patch
 	fix-check-parser-uptodate-or-warn.sh.patch
