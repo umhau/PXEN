@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# replacement for the ./configure script given in xen-api
+
+set -e
+
+set -v
+
+D="/tmp/configure.`date +'%s'`"
+
+OD="`pwd`"
+
+mkdir "$D"
+
+function cleanup { cd /; rm -rf $D; }
+
+trap cleanup EXIT
+
+cp configure.ml $D/
+
+cd $D
+
+ls
+
+ocamlfind ocamlopt -package "cmdliner,findlib,unix" -linkpkg configure.ml -o configure
+
+ls
+
+cp -rv "$D" "$OD"/tmp
+
+cp config.mk "$OD"/
+
+$D/configure $*
