@@ -6,8 +6,6 @@ set -v                                         # echo all lines before execution
 
 [ `whoami` == 'root' ] && echo 'must NOT be root!' && exit # check for superuser
 
-bash ./dependencies.sh
-
 rm -rf xen-api                                       # remove if already present
 
 git clone https://github.com/xapi-project/xen-api.git # Pull the XAPI repository
