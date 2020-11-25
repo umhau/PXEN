@@ -8,7 +8,7 @@ set -v                                         # echo all lines before execution
 
 # -- apk-sourced packages ---------------------------------------------------- #
 
-apk add ocaml=4.02.3                          # pin ocaml to the version we need
+sudo apk add ocaml=4.02.3                     # pin ocaml to the version we need
 
 sudo cp -v ./repositories /etc/apk/repositories       # Add community repository
 
