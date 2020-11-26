@@ -4,9 +4,9 @@ set -e                                                       # exit on any error
 
 set -v                                         # echo all lines before execution
 
-ocaml_version='4.04.1'
+# ocaml_version='4.04.1'
 
-# ocaml_version='4.02.3'
+ocaml_version='4.02.3'
 
 [ `whoami` == 'root' ] && echo 'must NOT be root!' && exit # check for superuser
 
@@ -31,6 +31,8 @@ sudo apk add libc-dev                               # needed for installing dune
 opam init                              # Initialize opam. Just keep hitting 'y'.
 
 eval $(opam env)                                               # Initialize opam
+
+opam pin https://github.com/umhau/sexplib0.git
 
 opam pin https://github.com/umhau/ppxlib.git         # change version dependency
 
