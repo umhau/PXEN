@@ -32,6 +32,8 @@ opam init                              # Initialize opam. Just keep hitting 'y'.
 
 eval $(opam env)                                               # Initialize opam
 
+opam install ocaml-secondary-compiler --jobs=1
+
 rm -rf sexplib0
 git clone https://github.com/umhau/sexplib0.git
 cd sexplib0
