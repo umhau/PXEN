@@ -35,7 +35,7 @@ eval $(opam env)                                               # Initialize opam
 rm -rf sexplib0
 git clone https://github.com/umhau/sexplib0.git
 cd sexplib0
-git checkout 9970e605bdbdc77809c01b1db5a612e26e8f56c5
+git checkout f49b1b00e5ae9f59a22a1fe07d9bf0dfee5e8300
 cd ..
 opam pin sexplib0#HEAD
 
