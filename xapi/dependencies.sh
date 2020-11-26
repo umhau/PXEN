@@ -32,7 +32,9 @@ opam init                              # Initialize opam. Just keep hitting 'y'.
 
 eval $(opam env)                                               # Initialize opam
 
-opam pin https://github.com/umhau/sexplib0.git --jobs=1
+git clone https://github.com/umhau/sexplib0.git
+git checkout 9970e605bdbdc77809c01b1db5a612e26e8f56c5
+opam pin sexplib0#HEAD
 
 opam pin https://github.com/umhau/ppxlib.git         # change version dependency
 
