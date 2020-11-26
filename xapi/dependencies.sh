@@ -32,13 +32,13 @@ opam init                              # Initialize opam. Just keep hitting 'y'.
 
 eval $(opam env)                                               # Initialize opam
 
-opam pin https://github.com/umhau/sexplib0.git
+opam pin https://github.com/umhau/sexplib0.git --jobs=1
 
 opam pin https://github.com/umhau/ppxlib.git         # change version dependency
 
 opam pin https://github.com/umhau/ppx_custom_printf.git            # fixed a bug
 
-opam install dune base64 ppxlib async js_of_ocaml-ppx lwt       # ocaml-rpc deps
+opam install dune base64 async js_of_ocaml-ppx lwt       # ocaml-rpc deps
 
 opam install cow cmdliner rresult yojson xmlm              # more ocaml-rpc deps
 
