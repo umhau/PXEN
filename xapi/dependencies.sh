@@ -36,8 +36,8 @@ rm -rf sexplib0
 git clone https://github.com/umhau/sexplib0.git
 cd sexplib0
 git checkout 9970e605bdbdc77809c01b1db5a612e26e8f56c5
-opam pin sexplib0#HEAD
 cd ..
+opam pin sexplib0#HEAD
 
 opam pin https://github.com/umhau/ppxlib.git         # change version dependency
 
