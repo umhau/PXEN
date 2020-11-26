@@ -4,7 +4,7 @@ set -e                                                       # exit on any error
 
 set -v                                         # echo all lines before execution
 
-ocaml_version='4.04.1'
+ocaml_version='4.02.3'
 
 # ocaml_version='4.02.3'
 
@@ -32,7 +32,9 @@ opam init                              # Initialize opam. Just keep hitting 'y'.
 
 eval $(opam env)                                               # Initialize opam
 
-# opam pin https://github.com/umhau/ppx_custom_printf.git            # fixed a bug
+opam pin https://github.com/umhau/ppx_custom_printf.git            # fixed a bug
+
+opam pin https://github.com/umhau/ppxlib.git         # change version dependency
 
 opam install dune base64 ppxlib async js_of_ocaml-ppx lwt       # ocaml-rpc deps
 
