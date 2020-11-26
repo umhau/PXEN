@@ -8,7 +8,7 @@ set -v                                         # echo all lines before execution
 
 apk add python2 git        # python 2.X: compatible with 10-year-old python tool
 
-git clone https://github.com/gmoro/proxyDHCPd.git         # pull proxy DHCP tool
+git clone https://github.com/umhau/proxyDHCPd.git         # pull proxy DHCP tool
 
 cd proxyDHCPd                                    # enter directory to install it
 
