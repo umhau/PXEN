@@ -4,22 +4,23 @@ set -e                                                       # exit on any error
 
 set -v                                         # echo all lines before execution
 
+ocaml_version='4.04.1'
 
 [ `whoami` == 'root' ] && echo 'must NOT be root!' && exit # check for superuser
 
 # -- apk packages ------------------------------------------------------------ #          
 
-sudo apk add --repository `pwd`/ ocaml-4.02.3-r5.apk  # pin ocaml to old version
+sudo apk add --repository `pwd`/ apk-ocaml-$ocaml_version/ocaml*     # pin ocaml
 
 sudo cp -v ./repositories /etc/apk/repositories       # Add community repository
 
-sudo apk add git opam nano wget tar make ocaml-compiler-libs              # deps
+# sudo apk add ocaml-compiler-libs ocaml-ocamldoc     # covered by manual builds
+
+sudo apk add git opam nano wget tar make                                  # deps
 
 sudo apk add dune gmp-dev perl pkgconf xen-dev       # needed for making zen-api
 
 sudo apk add libc-dev                               # needed for installing dune
-
-sudo apk add ocaml-ocamldoc                             # needed for zenith, &c.
 
 # stdext xapi-netdev xapi-stdext-monadic  # not sure about these
 

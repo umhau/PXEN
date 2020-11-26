@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# version='4.02.3'
+
+version='4.04.1'
 
 # -- use the below to get the ocaml build files ------------------------------ #
 
@@ -15,9 +18,9 @@
 
 sudo apk add alpine-sdk   # metapackage pulls packages for building new packages
 
-cd ocaml                          # enter directory with build instructions file
+cd ocaml_build_$version           # enter directory with build instructions file
 
-sudo mkdir -p /var/cache/distfiles     # create file where temp build stuff goes
+sudo mkdir -pv /var/cache/distfiles    # create file where temp build stuff goes
 
 sudo chmod a+w /var/cache/distfiles         # make sure the permissions are good
 
