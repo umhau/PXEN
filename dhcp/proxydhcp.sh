@@ -4,9 +4,9 @@ set -e                                                       # exit on any error
 
 set -v                                         # echo all lines before execution
 
-[ `whoami` != 'root' ] && echo 'must be root!' && exit     # check for superuser
+sudo apk add python2 git   # python 2.X: compatible with 10-year-old python tool
 
-apk add python2 git        # python 2.X: compatible with 10-year-old python tool
+rm -rf proxyDHCPd                           # remove the old version of the tool
 
 git clone https://github.com/umhau/proxyDHCPd.git         # pull proxy DHCP tool
 
