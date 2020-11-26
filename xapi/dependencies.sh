@@ -32,6 +32,7 @@ opam init                              # Initialize opam. Just keep hitting 'y'.
 
 eval $(opam env)                                               # Initialize opam
 
+rm -rf sexplib0
 git clone https://github.com/umhau/sexplib0.git
 cd sexplib0
 git checkout 9970e605bdbdc77809c01b1db5a612e26e8f56c5
