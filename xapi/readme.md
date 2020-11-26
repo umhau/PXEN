@@ -5,6 +5,16 @@ xapi is what xcp-ng center and xen orchestra use to control their hypervisors.
 
 xapi is hard to install.
 
+## todo
+
+I suspect that the original build environment uses ocaml 4.02.3, but there's some
+inconsistencies in the dependency graph - I can't find a scenario that actually 
+fits all the pieces involved.
+
+Next step, `bash dependencies.sh` and try to sort out a way to get everything compiling.
+
+Alternately: see if I can build docker, and then pull the pieces out of there. Docker uses Alpine, right?
+
 ## installation
 
 ```

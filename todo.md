@@ -18,6 +18,10 @@ The proxy-DHCP code is broken. Working on fixing it; forked the repo and am doin
 
 2. Once _something_ boots, work on a) specifying what it is I want to boot, and b) make the usb & server run alpine.
 
+### later - not MVP
+
+- get XAPI working. That involves getting the build environment functional.
+
 ## alpine versions
 
 http://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-xen-3.12.1-x86_64.iso Built-in support for Xen Hypervisor. Includes packages targetted at Xen usage. Use for Xen Dom0. 
