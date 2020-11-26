@@ -4,7 +4,7 @@ set -e                                                       # exit on any error
 
 set -v                                         # echo all lines before execution
 
-ocaml_version='4.02.3'
+ocaml_version='4.04.1'
 
 # ocaml_version='4.02.3'
 
