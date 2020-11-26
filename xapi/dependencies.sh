@@ -37,8 +37,8 @@ opam install ocaml-secondary-compiler --jobs=1
 rm -rf sexplib0
 git clone https://github.com/umhau/sexplib0.git
 cd sexplib0
-# git checkout f49b1b00e5ae9f59a22a1fe07d9bf0dfee5e8300
-git checkout a7eb496f3247a02505306fc072cbeb0b0c2a1572
+git checkout f49b1b00e5ae9f59a22a1fe07d9bf0dfee5e8300 # v11
+# git checkout a7eb496f3247a02505306fc072cbeb0b0c2a1572 # v12
 cd ..
 opam pin sexplib0#HEAD
 
