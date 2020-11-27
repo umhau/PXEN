@@ -5,6 +5,8 @@ xapi is what xcp-ng center and xen orchestra use to control their hypervisors.
 
 xapi is hard to install.
 
+If the system is to be used in a datacenter, it will need a management console like xen orchestra. Otherwise they're all working independently with no central management and when they start there'll be no decent way to control them.
+
 ## todo
 
 I suspect that the original build environment uses ocaml 4.02.3, but there's some
