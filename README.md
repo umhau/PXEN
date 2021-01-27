@@ -41,7 +41,11 @@ There's a lot of cluster tools that run on top of a group of machines. Might be 
 
 Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576 https://hpc.guix.info/blog/2017/11/installing-guix-on-a-cluster/
 
-Could also be interesting to share USB devices over the network. http://usbip.sourceforge.net/
+## USB passthrough
+
+https://wiki.xenproject.org/wiki/Xen_USB_Passthrough There are two general methods for passing through individual host devices to a guest. The first is via an emulated USB device controller; the second is PVUSB. Additionally, there are two ways to add USB devices to a guest: via the config file at domain creation time, and via hot-plug while the VM is running. 
+
+Could be interesting to share USB devices over the network. http://usbip.sourceforge.net/
 
 ### console interfaces
 
