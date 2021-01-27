@@ -41,6 +41,8 @@ There's a lot of cluster tools that run on top of a group of machines. Might be 
 
 Also, try using guix. I think it would make a lot of things way easier. https://news.ycombinator.com/item?id=25187576 https://hpc.guix.info/blog/2017/11/installing-guix-on-a-cluster/
 
+Could also be interesting to share USB devices over the network. http://usbip.sourceforge.net/
+
 ### console interfaces
 
 https://libvirt.org/index.html  The libvirt project is a toolkit to manage virtualization platforms. 
